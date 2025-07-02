@@ -1,0 +1,367 @@
+wandb: Currently logged in as: coyfelix7 (coyfelix7-universit-t-leipzig) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.20.1
+wandb: Run data is saved locally in /home/sc.uni-leipzig.de/tk51maga/projects/uitb/RL_2025_UITB_REG/simulators/wandb/run-20250613_161020-zw5fqoeg
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run reg_mobl_arms_index_pointing_negative_seven_l_one
+wandb: ⭐️ View project at https://wandb.ai/coyfelix7-universit-t-leipzig/uitb
+wandb: 🚀 View run at https://wandb.ai/coyfelix7-universit-t-leipzig/uitb/runs/zw5fqoeg
+ordereddict([('algorithm', 'PPO'), ('policy_type', 'policies.MultiInputActorCriticPolicyTanhActions'), ('policy_kwargs', ordereddict([('activation_fn', 'torch.nn.LeakyReLU'), ('net_arch', [256, 256]), ('log_std_init', 0.0), ('features_extractor_class', 'feature_extractor.FeatureExtractor'), ('normalize_images', False)])), ('lr', ordereddict([('function', 'schedule.linear_schedule'), ('kwargs', ordereddict([('initial_value', 5e-05), ('min_value', 1e-07), ('threshold', 0.8)]))])), ('reg', ordereddict([('l1', 1e-07), ('l2', 0.0), ('dropout', 0.0), ('layer_norm', False)])), ('total_timesteps', 100000000), ('device', 'cuda'), ('num_workers', 10), ('nsteps', 4000), ('batch_size', 500), ('target_kl', 1.0), ('save_freq', 5000000)])
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/sc.uni-leipzig.de/tk51maga/.local/lib/python3.11/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.set_task_regularisation to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.set_task_regularisation` for environment variables or `env.get_wrapper_attr('set_task_regularisation')` that will search the reminding wrappers.[0m
+  logger.warn(
+Reg True
+Using cuda device
+Reg True
+Reg True
+Logging to /home/sc.uni-leipzig.de/tk51maga/projects/uitb/RL_2025_UITB_REG/simulators/reg_mobl_arms_index_pointing_negative_seven_l_one/PPO_1
+Update penalty
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 800      |
+|    ep_rew_mean     | -74.8    |
+| time/              |          |
+|    fps             | 602      |
+|    iterations      | 1        |
+|    time_elapsed    | 66       |
+|    total_timesteps | 40000    |
+---------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -74.6       |
+| time/                   |             |
+|    fps                  | 571         |
+|    iterations           | 2           |
+|    time_elapsed         | 140         |
+|    total_timesteps      | 80000       |
+| train/                  |             |
+|    approx_kl            | 0.010013183 |
+|    clip_fraction        | 0.108       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.9       |
+|    explained_variance   | -21.6       |
+|    learning_rate        | 5e-05       |
+|    loss                 | 0.053       |
+|    n_updates            | 10          |
+|    policy_gradient_loss | -0.00588    |
+|    std                  | 0.998       |
+|    value_loss           | 0.174       |
+-----------------------------------------
+Update penalty
+----------------------------------------
+| rollout/                |            |
+|    ep_len_mean          | 800        |
+|    ep_rew_mean          | -74.3      |
+| time/                   |            |
+|    fps                  | 560        |
+|    iterations           | 3          |
+|    time_elapsed         | 213        |
+|    total_timesteps      | 120000     |
+| train/                  |            |
+|    approx_kl            | 0.01032521 |
+|    clip_fraction        | 0.111      |
+|    clip_range           | 0.2        |
+|    entropy_loss         | -36.8      |
+|    explained_variance   | -0.738     |
+|    learning_rate        | 5e-05      |
+|    loss                 | 0.00785    |
+|    n_updates            | 20         |
+|    policy_gradient_loss | -0.0116    |
+|    std                  | 0.998      |
+|    value_loss           | 0.0611     |
+----------------------------------------
+Update penalty
+------------------------------------------
+| rollout/                |              |
+|    ep_len_mean          | 800          |
+|    ep_rew_mean          | -74.1        |
+| time/                   |              |
+|    fps                  | 558          |
+|    iterations           | 4            |
+|    time_elapsed         | 286          |
+|    total_timesteps      | 160000       |
+| train/                  |              |
+|    approx_kl            | 0.0129562225 |
+|    clip_fraction        | 0.129        |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -36.8        |
+|    explained_variance   | -0.204       |
+|    learning_rate        | 5e-05        |
+|    loss                 | -0.00273     |
+|    n_updates            | 30           |
+|    policy_gradient_loss | -0.0166      |
+|    std                  | 0.997        |
+|    value_loss           | 0.0491       |
+------------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -73.8       |
+| time/                   |             |
+|    fps                  | 554         |
+|    iterations           | 5           |
+|    time_elapsed         | 360         |
+|    total_timesteps      | 200000      |
+| train/                  |             |
+|    approx_kl            | 0.011324108 |
+|    clip_fraction        | 0.124       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.8       |
+|    explained_variance   | -0.00354    |
+|    learning_rate        | 5e-05       |
+|    loss                 | -0.00911    |
+|    n_updates            | 40          |
+|    policy_gradient_loss | -0.0167     |
+|    std                  | 0.996       |
+|    value_loss           | 0.0436      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -73.1       |
+| time/                   |             |
+|    fps                  | 552         |
+|    iterations           | 6           |
+|    time_elapsed         | 434         |
+|    total_timesteps      | 240000      |
+| train/                  |             |
+|    approx_kl            | 0.012168614 |
+|    clip_fraction        | 0.128       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.8       |
+|    explained_variance   | 0.092       |
+|    learning_rate        | 5e-05       |
+|    loss                 | 0.00138     |
+|    n_updates            | 50          |
+|    policy_gradient_loss | -0.0175     |
+|    std                  | 0.995       |
+|    value_loss           | 0.0412      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -72.7       |
+| time/                   |             |
+|    fps                  | 550         |
+|    iterations           | 7           |
+|    time_elapsed         | 508         |
+|    total_timesteps      | 280000      |
+| train/                  |             |
+|    approx_kl            | 0.012190754 |
+|    clip_fraction        | 0.127       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.7       |
+|    explained_variance   | 0.086       |
+|    learning_rate        | 5e-05       |
+|    loss                 | -0.00919    |
+|    n_updates            | 60          |
+|    policy_gradient_loss | -0.0172     |
+|    std                  | 0.994       |
+|    value_loss           | 0.0435      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -72.8       |
+| time/                   |             |
+|    fps                  | 547         |
+|    iterations           | 8           |
+|    time_elapsed         | 584         |
+|    total_timesteps      | 320000      |
+| train/                  |             |
+|    approx_kl            | 0.013000521 |
+|    clip_fraction        | 0.14        |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.7       |
+|    explained_variance   | 0.196       |
+|    learning_rate        | 5e-05       |
+|    loss                 | -0.0109     |
+|    n_updates            | 70          |
+|    policy_gradient_loss | -0.0179     |
+|    std                  | 0.992       |
+|    value_loss           | 0.0385      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -73         |
+| time/                   |             |
+|    fps                  | 546         |
+|    iterations           | 9           |
+|    time_elapsed         | 658         |
+|    total_timesteps      | 360000      |
+| train/                  |             |
+|    approx_kl            | 0.013104391 |
+|    clip_fraction        | 0.144       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.7       |
+|    explained_variance   | 0.204       |
+|    learning_rate        | 5e-05       |
+|    loss                 | -0.00818    |
+|    n_updates            | 80          |
+|    policy_gradient_loss | -0.0186     |
+|    std                  | 0.992       |
+|    value_loss           | 0.0373      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -72.4       |
+| time/                   |             |
+|    fps                  | 545         |
+|    iterations           | 10          |
+|    time_elapsed         | 732         |
+|    total_timesteps      | 400000      |
+| train/                  |             |
+|    approx_kl            | 0.013231665 |
+|    clip_fraction        | 0.143       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.7       |
+|    explained_variance   | 0.262       |
+|    learning_rate        | 5e-05       |
+|    loss                 | -0.00784    |
+|    n_updates            | 90          |
+|    policy_gradient_loss | -0.0184     |
+|    std                  | 0.99        |
+|    value_loss           | 0.0355      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -71.9       |
+| time/                   |             |
+|    fps                  | 544         |
+|    iterations           | 11          |
+|    time_elapsed         | 807         |
+|    total_timesteps      | 440000      |
+| train/                  |             |
+|    approx_kl            | 0.013630027 |
+|    clip_fraction        | 0.147       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.6       |
+|    explained_variance   | 0.277       |
+|    learning_rate        | 5e-05       |
+|    loss                 | 0.00397     |
+|    n_updates            | 100         |
+|    policy_gradient_loss | -0.0186     |
+|    std                  | 0.989       |
+|    value_loss           | 0.0424      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 800         |
+|    ep_rew_mean          | -71.9       |
+| time/                   |             |
+|    fps                  | 544         |
+|    iterations           | 12          |
+|    time_elapsed         | 880         |
+|    total_timesteps      | 480000      |
+| train/                  |             |
+|    approx_kl            | 0.013159546 |
+|    clip_fraction        | 0.15        |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.6       |
+|    explained_variance   | 0.276       |
+|    learning_rate        | 5e-05       |
+|    loss                 | -0.013      |
+|    n_updates            | 110         |
+|    policy_gradient_loss | -0.0182     |
+|    std                  | 0.988       |
+|    value_loss           | 0.0366      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 799         |
+|    ep_rew_mean          | -70.9       |
+| time/                   |             |
+|    fps                  | 545         |
+|    iterations           | 13          |
+|    time_elapsed         | 953         |
+|    total_timesteps      | 520000      |
+| train/                  |             |
+|    approx_kl            | 0.013072166 |
+|    clip_fraction        | 0.151       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.6       |
+|    explained_variance   | 0.315       |
+|    learning_rate        | 5e-05       |
+|    loss                 | -0.0147     |
+|    n_updates            | 120         |
+|    policy_gradient_loss | -0.0193     |
+|    std                  | 0.987       |
+|    value_loss           | 0.0402      |
+-----------------------------------------
+Update penalty
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 799         |
+|    ep_rew_mean          | -70.2       |
+| time/                   |             |
+|    fps                  | 543         |
+|    iterations           | 14          |
+|    time_elapsed         | 1029        |
+|    total_timesteps      | 560000      |
+| train/                  |             |
+|    approx_kl            | 0.013116457 |
+|    clip_fraction        | 0.153       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -36.5       |
+|    explained_variance   | 0.292       |
+|    learning_rate        | 5e-05       |
+|    loss                 | 0.00566     |
+|    n_updates            | 130         |
+|    policy_gradient_loss | -0.0173     |
+|    std                  | 0.985       |
+|    value_loss           | 0.0744      |
+-----------------------------------------
+Update penalty
+----------------------------------------
+| rollout/                |            |
+|    ep_len_mean          | 800        |
+|    ep_rew_mean          | -70        |
+| time/                   |            |
+|    fps                  | 543        |
+|    iterations           | 15         |
+|    time_elapsed         | 1104       |
+|    total_timesteps      | 600000     |
+| train/                  |            |
+|    approx_kl            | 0.01388706 |
+|    clip_fraction        | 0.163      |
+|    clip_range           | 0.2        |
+|    entropy_loss         | -36.5      |
+|    explained_variance   | 0.418      |
+|    learning_rate        | 5e-05      |
+|    loss                 | -0.0137    |
+|    n_updates            | 140        |
+|    policy_gradient_loss | -0.0203    |
+|    std                  | 0.984      |
+|    value_loss           | 0.0455     |
+----------------------------------------
+slurmstepd: error: *** JOB 14631584 ON paula01 CANCELLED AT 2025-06-13T16:29:27 ***
