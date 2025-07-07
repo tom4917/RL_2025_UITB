@@ -16,4 +16,4 @@ source activate uitb
 
 CONFIG_NAME=$1
 
-conda run -n uitb python uitb/train/trainer.py uitb/configs/mobl_arms_index_pointing_dropout_5.yaml
+conda run -n uitb python uitb/train/trainer.py uitb/configs/mobl_arms_index_pointing_layer_normalization.yaml
