@@ -131,7 +131,7 @@ class PPO(BaseRLModel):
 
   def learn(self, wandb_callback, with_evaluation=False, eval_freq=400000, n_eval_episodes=5, eval_info_keywords=()):
     if with_evaluation:
-        self.eval_env = Monitor(self.eval_env, info_keywords=eval_info_keywords)
+        self.eval_env = Monitor_customops(self.eval_env, info_keywords=eval_info_keywords)
         self.eval_freq = eval_freq // self.n_envs
         self.eval_callback = EvalCallback(self.eval_env, eval_freq=self.eval_freq, n_eval_episodes=n_eval_episodes, info_keywords=eval_info_keywords)
 
@@ -208,20 +208,41 @@ class PPO_sb3_customlogs(PPO_sb3):
         return self
 
    def collect_rollouts(self, env, callback, rollout_buffer, n_rollout_steps: int):
-    # 1) run the usual rollout collection
-    status = super().collect_rollouts(env, callback, rollout_buffer, n_rollout_steps)
-    print(f"Update penalty")
-    if self.l1 is not None or self.l2 is not None:
-     # 2) immediately after collecting data but *before* the gradient step,
-     #    push the latest weights into all envs for their regularisation logic:
-     sd = self.policy.state_dict()
-     weights = {k: v.cpu().numpy() for k, v in sd.items() if "weight" in k}
+       # 1) run the usual rollout collection
+       status = super().collect_rollouts(env, callback, rollout_buffer, n_rollout_steps)
+       if not status:
+           return status
 
-     # Here we assume your env has set_task_regularisation(weights, gamma, is_l2)
-     # and SubprocVecEnv so we use env_method:
-     env.env_method("set_task_regularisation", weights, self.l1, self.l2)
+       if self.l1 is not None or self.l2 is not None:
+           # Get latest weights
+           sd = self.policy.state_dict()
+           weights = {k: v.cpu().numpy() for k, v in sd.items() if "weight" in k}
 
-    return status
+           # Flatten all weight arrays into one
+           all_weights = np.concatenate([w.ravel() for w in weights.values()])
+
+           # Compute penalties
+           l1_penalty = None
+           l2_penalty = None
+           if self.l1 is not None:
+               l1_penalty = np.sum(np.abs(all_weights))
+               self.logger.record("regularisation/l1_penalty", l1_penalty)
+
+           if self.l2 is not None:
+               l2_penalty = np.sqrt(np.sum(all_weights**2))
+               self.logger.record("regularisation/l2_penalty", l2_penalty)
+
+           # Push penalties into environments if needed
+           # assumes custom env implements: set_task_regularisation(weights, l1, l2)
+           try:
+               env.env_method("set_task_regularisation", weights, self.l1, self.l2)
+           except AttributeError:
+               # fallback for non-VecEnvs or if method not implemented
+               if hasattr(env, "set_task_regularisation"):
+                   env.set_task_regularisation(weights, self.l1, self.l2)
+
+       return status
+
 
 class Monitor_customops(Monitor):
     """    
@@ -246,8 +267,8 @@ class Monitor_customops(Monitor):
         info_keywords: Tuple[Tuple[str, str], ...] = (),
         override_existing: bool = True,
     ):
+        self.penalty = 0
         super().__init__(env=env, filename=filename, allow_early_resets=allow_early_resets, reset_keywords=reset_keywords, info_keywords=info_keywords, override_existing=override_existing)
-
 
     def reset(self, **kwargs) -> Tuple[ObsType, Dict[str, Any]]:
         """
@@ -262,6 +283,7 @@ class Monitor_customops(Monitor):
                 "wrap your env with Monitor_customops(env, path, allow_early_resets=True)"
             )
         self.info_keywords_acc_valuedict = defaultdict(list)
+        self.penalty = 0
         return super().reset(**kwargs)
 
     def step(self, action: ActType) -> Tuple[ObsType, SupportsFloat, bool, bool, Dict[str, Any]]:
@@ -274,22 +296,35 @@ class Monitor_customops(Monitor):
         if self.needs_reset:
             raise RuntimeError("Tried to step environment that needs reset")
         observation, reward, terminated, truncated, info = self.env.step(action)
+        
+        # Add penalty with error handling
+        if "penalty" in info:
+            self.penalty += info["penalty"]
+        
         self.rewards.append(float(reward))
         for key, op in self.info_keywords:
-            if op in ["sum", "mean"]:
+            if op in ["sum", "mean"] and key in info:
                 self.info_keywords_acc_valuedict[key].append(float(info[key]))
+        
         if terminated or truncated:
             self.needs_reset = True
             ep_rew = sum(self.rewards)
             ep_len = len(self.rewards)
-            ep_info = {"r": round(ep_rew, 6), "l": ep_len, "t": round(time.time() - self.t_start, 6)}
+            # Include penalty in episode info
+            ep_info = {
+                "r": round(ep_rew, 6), 
+                "l": ep_len, 
+                "t": round(time.time() - self.t_start, 6),
+                "penalty": round(self.penalty, 6)
+            }
             for key, op in self.info_keywords:
                 if op == "sum":
                    ep_info[key] = sum(self.info_keywords_acc_valuedict[key])
                 elif op == "mean":
                    ep_info[key] = safe_mean(self.info_keywords_acc_valuedict[key])
                 else:
-                  ep_info[key] = info[key]
+                  if key in info:
+                      ep_info[key] = info[key]
             self.episode_returns.append(ep_rew)
             self.episode_lengths.append(ep_len)
             self.episode_times.append(time.time() - self.t_start)
@@ -299,6 +334,7 @@ class Monitor_customops(Monitor):
             info["episode"] = ep_info
         self.total_steps += 1
         return observation, reward, terminated, truncated, info
+
 
 def make_vec_env(
     env_id: Union[str, Callable[..., gym.Env]],
@@ -390,6 +426,3 @@ def make_vec_env(
     # Prepare the seeds for the first reset
     vec_env.seed(seed)
     return vec_env
-
-
-
